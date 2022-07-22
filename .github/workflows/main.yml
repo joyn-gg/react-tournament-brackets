@@ -30,6 +30,6 @@ jobs:
         uses: EndBug/add-and-commit@v4
         with:
           add: dist
-          message: "ci(build): build source code [${{ github.sha }}]]"
+          message: "ci(build): build source code [${{ github.sha }}]"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
