@@ -6,18 +6,16 @@ export declare const calculateVerticalPositioning: ({ rowIndex, columnIndex, row
     columnIndex: any;
     rowHeight: any;
 }) => number;
-export declare const calculatePositionOfFinalGame: (rowIndex: any, columnIndex: any, { canvasPadding, rowHeight, columnWidth, gameHeight, upperBracketHeight, lowerBracketHeight, offsetX, offsetY, }: {
+export declare const calculatePositionOfFinalGame: (rowIndex: any, columnIndex: any, { canvasPadding, columnWidth, upperBracketHeight, roundHeader, offsetX, offsetY, }: {
     canvasPadding: any;
-    rowHeight: any;
     columnWidth: any;
-    gameHeight: any;
     upperBracketHeight: any;
-    lowerBracketHeight: any;
+    roundHeader?: number;
     offsetX?: number;
     offsetY?: number;
 }) => {
     x: any;
-    y: any;
+    y: number;
 };
 export declare const calculatePositionOfMatchUpperBracket: (rowIndex: any, columnIndex: any, { canvasPadding, rowHeight, columnWidth, offsetX, offsetY }: {
     canvasPadding: any;
