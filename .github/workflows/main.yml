@@ -3,6 +3,10 @@ on:
   push:
     branches:
       - master
+    paths:
+      - "src/**"
+      - ".github/workflows/main.yml"
+  workflow_dispatch:
 jobs:
   build:
     name: Build source code
