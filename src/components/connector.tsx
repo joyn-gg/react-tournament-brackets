@@ -19,6 +19,14 @@ const Connector = ({
     connectorColorHighlight,
     width,
   } = getCalculatedStyles(style);
+  const bottomMatchAvailable =
+    bracketSnippet &&
+    bracketSnippet.previousBottomMatch &&
+    bracketSnippet.previousBottomMatch.state !== 'NO_PARTY';
+  const topMatchAvailable =
+    bracketSnippet &&
+    bracketSnippet.previousTopMatch &&
+    bracketSnippet.previousTopMatch.state !== 'NO_PARTY';
 
   const pathInfo = multiplier => {
     const middlePointOfMatchComponent = boxHeight / 2;
@@ -62,7 +70,7 @@ const Connector = ({
   const { x, y } = currentMatchPosition;
   return (
     <>
-      {previousTopMatchPosition && (
+      {previousTopMatchPosition && topMatchAvailable && (
         <path
           d={pathInfo(-1).join(' ')}
           id={`connector-${x}-${y}-${-1}`}
@@ -70,7 +78,7 @@ const Connector = ({
           stroke={topHighlighted ? connectorColorHighlight : connectorColor}
         />
       )}
-      {previousBottomMatchPosition && (
+      {previousBottomMatchPosition && bottomMatchAvailable && (
         <path
           d={pathInfo(1).join(' ')}
           id={`connector-${x}-${y}-${1}`}
@@ -79,8 +87,12 @@ const Connector = ({
         />
       )}
 
-      {topHighlighted && <use href={`connector-${x}-${y}-${-1}`} />}
-      {bottomHighlighted && <use href={`connector-${x}-${y}-${1}`} />}
+      {topHighlighted && topMatchAvailable && (
+        <use href={`connector-${x}-${y}-${-1}`} />
+      )}
+      {bottomHighlighted && bottomMatchAvailable && (
+        <use href={`connector-${x}-${y}-${1}`} />
+      )}
     </>
   );
 };
