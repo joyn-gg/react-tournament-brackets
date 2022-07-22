@@ -20,15 +20,12 @@ const FinalGame = ({
   upperBracketHeight,
   lowerBracketHeight,
 }) => {
-  const { canvasPadding, columnWidth, rowHeight, roundHeader } =
-    calculatedStyles;
+  const { canvasPadding, columnWidth, roundHeader } = calculatedStyles;
   const { x, y } = calculatePositionOfFinalGame(rowIndex, columnIndex, {
     canvasPadding,
     columnWidth,
-    rowHeight,
-    gameHeight,
     upperBracketHeight,
-    lowerBracketHeight,
+    roundHeader: roundHeader.height + roundHeader.marginBottom,
   });
 
   return (
@@ -46,6 +43,7 @@ const FinalGame = ({
             upperBracketHeight,
             style: calculatedStyles,
             bracketSnippet,
+            roundHeader,
           }}
         />
       )}

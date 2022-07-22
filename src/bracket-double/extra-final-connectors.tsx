@@ -11,23 +11,20 @@ const FinalConnectors = ({
   bracketSnippet = null,
   offsetY = 0,
   numOfLowerRounds,
-  lowerBracketHeight,
   upperBracketHeight,
-  gameHeight,
+  roundHeader,
 }) => {
-  const { columnWidth, rowHeight, canvasPadding } = getCalculatedStyles(style);
+  const { columnWidth, canvasPadding } = getCalculatedStyles(style);
 
   const currentMatchPosition = calculatePositionOfFinalGame(
     rowIndex,
     columnIndex,
     {
       canvasPadding,
-      rowHeight,
       columnWidth,
       offsetY,
-      lowerBracketHeight,
       upperBracketHeight,
-      gameHeight,
+      roundHeader: roundHeader.height + roundHeader.marginBottom,
     }
   );
 
@@ -36,12 +33,9 @@ const FinalConnectors = ({
     numOfLowerRounds, // numOfRounds is higher than index by 1 and we need 2nd to last index
     {
       canvasPadding,
-      rowHeight,
       columnWidth,
       offsetY,
-      lowerBracketHeight,
       upperBracketHeight,
-      gameHeight,
     }
   );
 

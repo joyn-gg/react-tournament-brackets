@@ -16,9 +16,8 @@ const FinalConnectors = ({
   offsetY = 0,
   numOfUpperRounds,
   numOfLowerRounds,
-  lowerBracketHeight,
   upperBracketHeight,
-  gameHeight,
+  roundHeader,
 }) => {
   const { columnWidth, rowHeight, canvasPadding } = getCalculatedStyles(style);
 
@@ -27,12 +26,10 @@ const FinalConnectors = ({
     columnIndex,
     {
       canvasPadding,
-      rowHeight,
       columnWidth,
       offsetY,
-      lowerBracketHeight,
       upperBracketHeight,
-      gameHeight,
+      roundHeader: roundHeader.height + roundHeader.marginBottom,
     }
   );
   const previousTopMatchPosition = calculatePositionOfMatchUpperBracket(
