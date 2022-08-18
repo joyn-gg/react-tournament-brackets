@@ -1,4 +1,4 @@
-declare const FinalConnectors: ({ rowIndex, columnIndex, style, bracketSnippet, offsetY, numOfUpperRounds, numOfLowerRounds, lowerBracketHeight, upperBracketHeight, gameHeight, }: {
+declare const FinalConnectors: ({ rowIndex, columnIndex, style, bracketSnippet, offsetY, numOfUpperRounds, numOfLowerRounds, upperBracketHeight, roundHeader, }: {
     rowIndex: any;
     columnIndex: any;
     style: any;
@@ -6,8 +6,7 @@ declare const FinalConnectors: ({ rowIndex, columnIndex, style, bracketSnippet, 
     offsetY?: number;
     numOfUpperRounds: any;
     numOfLowerRounds: any;
-    lowerBracketHeight: any;
     upperBracketHeight: any;
-    gameHeight: any;
+    roundHeader: any;
 }) => JSX.Element;
 export default FinalConnectors;
