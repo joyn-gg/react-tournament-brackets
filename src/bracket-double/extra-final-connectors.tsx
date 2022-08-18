@@ -36,6 +36,7 @@ const FinalConnectors = ({
       columnWidth,
       offsetY,
       upperBracketHeight,
+      roundHeader: roundHeader.height + roundHeader.marginBottom,
     }
   );
 
