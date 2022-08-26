@@ -95,21 +95,21 @@ const SingleEliminationBracket = ({
     (roundHeader.isShown
       ? (roundHeader.height + roundHeader.marginBottom) * 2
       : 0);
-  const deciderBottom = deciderY + style.boxHeight;
+  const deciderBottom = deciderY + style.boxHeight + canvasPadding;
+  const realGameHeight =
+    decider && deciderBottom > gameHeight ? deciderBottom : gameHeight;
 
   return (
     <ThemeProvider theme={theme}>
       <SvgWrapper
         bracketWidth={gameWidth}
-        bracketHeight={deciderBottom > gameHeight ? deciderBottom : gameHeight}
+        bracketHeight={realGameHeight}
         startAt={startPosition}
       >
         <svg
-          height={deciderBottom > gameHeight ? deciderBottom : gameHeight}
+          height={realGameHeight}
           width={gameWidth}
-          viewBox={`0 0 ${gameWidth} ${
-            deciderBottom > gameHeight ? deciderBottom : gameHeight
-          }`}
+          viewBox={`0 0 ${gameWidth} ${realGameHeight}`}
         >
           <MatchContextProvider>
             <g>
