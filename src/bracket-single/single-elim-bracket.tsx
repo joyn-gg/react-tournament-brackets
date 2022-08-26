@@ -88,17 +88,28 @@ const SingleEliminationBracket = ({
     rowHeight,
   });
 
+  const deciderY =
+    finalMatchPos.y +
+    style.boxHeight +
+    style.spaceBetweenRows +
+    (roundHeader.isShown
+      ? (roundHeader.height + roundHeader.marginBottom) * 2
+      : 0);
+  const deciderBottom = deciderY + style.boxHeight;
+
   return (
     <ThemeProvider theme={theme}>
       <SvgWrapper
         bracketWidth={gameWidth}
-        bracketHeight={gameHeight}
+        bracketHeight={deciderBottom > gameHeight ? deciderBottom : gameHeight}
         startAt={startPosition}
       >
         <svg
-          height={gameHeight}
+          height={deciderBottom > gameHeight ? deciderBottom : gameHeight}
           width={gameWidth}
-          viewBox={`0 0 ${gameWidth} ${gameHeight}`}
+          viewBox={`0 0 ${gameWidth} ${
+            deciderBottom > gameHeight ? deciderBottom : gameHeight
+          }`}
         >
           <MatchContextProvider>
             <g>
@@ -183,9 +194,8 @@ const SingleEliminationBracket = ({
                   <RoundHeader
                     x={finalMatchPos.x}
                     y={
-                      finalMatchPos.y +
-                      style.boxHeight * 2 -
-                      roundHeader.height / 2
+                      deciderY -
+                      (roundHeader.height / 2 + roundHeader.marginBottom) * 2
                     }
                     roundHeader={roundHeader}
                     canvasPadding={canvasPadding}
@@ -197,13 +207,7 @@ const SingleEliminationBracket = ({
                 )}
                 <MatchWrapper
                   x={finalMatchPos.x}
-                  y={
-                    finalMatchPos.y +
-                    style.boxHeight * 2 +
-                    (roundHeader.isShown
-                      ? roundHeader.height + roundHeader.marginBottom
-                      : 0)
-                  }
+                  y={deciderY}
                   rowIndex={1}
                   columnIndex={columns.length - 1}
                   match={decider}
