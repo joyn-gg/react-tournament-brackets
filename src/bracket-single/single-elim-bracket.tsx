@@ -41,7 +41,8 @@ const SingleEliminationBracket = ({
   const { roundHeader, columnWidth, canvasPadding, rowHeight, width } =
     getCalculatedStyles(style);
 
-  const lastGame = matches.find(match => !match.nextMatchId);
+  const lastGame = matches.find(match => !match.nextMatchId && !match.decider);
+  const decider = matches.find(match => match.decider);
 
   const generateColumn = matchesColumn => {
     const previousMatchesColumn = matchesColumn.reduce((result, match) => {
@@ -80,6 +81,12 @@ const SingleEliminationBracket = ({
     roundHeader,
     currentRound
   );
+
+  const finalMatchPos = calculatePositionOfMatch(0, columns.length - 1, {
+    canvasPadding,
+    columnWidth,
+    rowHeight,
+  });
 
   return (
     <ThemeProvider theme={theme}>
@@ -170,6 +177,46 @@ const SingleEliminationBracket = ({
                 })
               )}
             </g>
+            {decider && (
+              <g>
+                {roundHeader.isShown && (
+                  <RoundHeader
+                    x={finalMatchPos.x}
+                    y={
+                      finalMatchPos.y +
+                      style.boxHeight * 2 -
+                      roundHeader.height / 2
+                    }
+                    roundHeader={roundHeader}
+                    canvasPadding={canvasPadding}
+                    width={width}
+                    numOfRounds={0}
+                    textOverride="Decider Match"
+                    columnIndex={columns.length - 1}
+                  />
+                )}
+                <MatchWrapper
+                  x={finalMatchPos.x}
+                  y={
+                    finalMatchPos.y +
+                    style.boxHeight * 2 +
+                    (roundHeader.isShown
+                      ? roundHeader.height + roundHeader.marginBottom
+                      : 0)
+                  }
+                  rowIndex={1}
+                  columnIndex={columns.length - 1}
+                  match={decider}
+                  topText={decider.startTime}
+                  bottomText={decider.name}
+                  teams={decider.participants}
+                  onMatchClick={onMatchClick}
+                  onPartyClick={onPartyClick}
+                  style={style}
+                  matchComponent={matchComponent}
+                />
+              </g>
+            )}
           </MatchContextProvider>
         </svg>
       </SvgWrapper>

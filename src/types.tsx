@@ -30,6 +30,8 @@ export type Match = {
 
   state: 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | string;
 
+  decider?: boolean;
+
   participants: Participant[];
 
   [key: string]: any;

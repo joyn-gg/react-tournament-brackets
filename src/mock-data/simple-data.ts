@@ -435,6 +435,19 @@ export const simpleSmallBracket = [
   },
 ];
 
+export const simpleSmallBracketWithDecider = [
+  ...simpleSmallBracket,
+  {
+    id: 999999,
+    nextMatchId: null,
+    tournamentRoundText: '3',
+    startTime: '2021-06-02',
+    state: 'SCHEDULED',
+    participants: [],
+    decider: true,
+  },
+];
+
 export const simpleBracket = [
   {
     id: 19874,

@@ -15,6 +15,7 @@ export declare type Match = {
     tournamentRoundText: string;
     startTime: string;
     state: 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | string;
+    decider?: boolean;
     participants: Participant[];
     [key: string]: any;
 };

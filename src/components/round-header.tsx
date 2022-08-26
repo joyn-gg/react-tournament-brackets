@@ -7,7 +7,8 @@ export default function RoundHeader({
   roundHeader,
   canvasPadding,
   numOfRounds,
-  tournamentRoundText,
+  tournamentRoundText = 0,
+  textOverride = '',
   columnIndex,
 }) {
   return (
@@ -33,6 +34,7 @@ export default function RoundHeader({
         dominantBaseline="middle"
         textAnchor="middle"
       >
+        {textOverride}
         {columnIndex + 1 === numOfRounds && 'Final'}
         {columnIndex + 1 === numOfRounds - 1 && 'Semi-final'}
         {columnIndex + 1 < numOfRounds - 1 && `Round ${tournamentRoundText}`}

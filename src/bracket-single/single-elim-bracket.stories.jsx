@@ -10,6 +10,7 @@ import {
   walkOverData,
   simpleBracket,
   simpleSmallBracket,
+  simpleSmallBracketWithDecider,
 } from '../mock-data/simple-data';
 import soloWalkover from '../mock-data/solo-walkover';
 
@@ -50,6 +51,11 @@ Bracket.args = {
 export const SmallBracket = Template.bind({});
 SmallBracket.args = {
   matches: simpleSmallBracket,
+  matchComponent: Match,
+};
+export const SmallBracketWithDecider = Template.bind({});
+SmallBracketWithDecider.args = {
+  matches: simpleSmallBracketWithDecider,
   matchComponent: Match,
 };
 export const WalkOverBracket = Template.bind({});
