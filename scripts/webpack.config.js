@@ -2,7 +2,6 @@ const path = require('path');
 const aliases = require('./aliases');
 
 const ROOT_DIR = path.resolve(__dirname, '../');
-const SRC_DIR = path.resolve(ROOT_DIR, 'src');
 const buildDir = 'dist';
 const BUILD_DIR = path.resolve(ROOT_DIR, buildDir);
 
@@ -54,6 +53,7 @@ module.exports = {
     filename: 'bundle.js',
     library: '@g-loot/react-tournament-brackets',
     libraryTarget: 'umd',
+    globalObject: 'this',
   },
   externals: {
     'styled-components': {
